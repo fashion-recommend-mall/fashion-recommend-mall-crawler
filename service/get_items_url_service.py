@@ -10,6 +10,7 @@ app = celery.Celery(
     backend="rpc://guest@localhost"
 )
 
+
 def _init_driver():
 
     options = webdriver.ChromeOptions()
@@ -43,6 +44,7 @@ def _valid_url(a_list : list[str]):
 
     return temp_list
 
+
 @app.task
 def get_items_url(state : dict):
 
@@ -50,7 +52,7 @@ def get_items_url(state : dict):
 
     with WebDriver(_init_driver()) as driver:
 
-        for page in range(1, state["pages"]+1):
+        for page in range(1, int(state["pages"])+1):
 
             driver.implicitly_wait(5)
 
@@ -66,3 +68,12 @@ def get_items_url(state : dict):
 
     return { state["category"] : url_list }
 
+
+@app.task
+def get_items_url_all(targets : dict):
+
+    g = celery.group(
+        get_items_url.s(target) for target in targets
+    )
+
+    return g()

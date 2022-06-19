@@ -1,139 +1,147 @@
 {
-    "go_go_sing" : 
-    [
+    "targets" : [
         {
+            "key" : "go_go_sing",
             "category" : "Top",
             "base_url" : "https://www.ggsing.com/product/list.html?cate_no=31",
             "x_path" : "/html/body/div/div/div/div/ul/li/div/a",
             "pages" : 1
         },
         {
+            "key" : "go_go_sing",
             "category" : "Top",
             "base_url" : "https://www.ggsing.com/product/list.html?cate_no=46",
             "x_path" : "/html/body/div/div/div/div/ul/li/div/a",
             "pages" : 1
         },
         {
+            "key" : "go_go_sing",
             "category" : "Outer",
             "base_url" : "https://www.ggsing.com/product/list.html?cate_no=7",
             "x_path" : "/html/body/div/div/div/div/ul/li/div/a",
             "pages" : 1
         },
         {
+            "key" : "go_go_sing",
             "category" : "Dress",
             "base_url" : "https://www.ggsing.com/product/list.html?cate_no=197",
             "x_path" : "/html/body/div/div/div/div/ul/li/div/a",
             "pages" : 1
         },
         {
+            "key" : "go_go_sing",
             "category" : "Skirt",
             "base_url" : "https://www.ggsing.com/product/list.html?cate_no=26",
             "x_path" : "/html/body/div/div/div/div/ul/li/div/a",
             "pages" : 1
         },
         {
+            "key" : "go_go_sing",
             "category" : "Pants",
             "base_url" : "https://www.ggsing.com/product/list.html?cate_no=47",
             "x_path" : "/html/body/div/div/div/div/ul/li/div/a",
             "pages" : 1
-        }
-    ],
-
-    "ki_jac_nam" : 
-    [
+        },
         {
+            "key" : "ki_jac_nam",
             "category" : "Top",
             "base_url" : "https://smallman.co.kr/product/list.html?cate_no=2832",
             "x_path" : "/html/body/div/div/div/div/div/div/div/a",
             "pages" : 1
         },
         {
+            "key" : "ki_jac_nam",
             "category" : "Top",
             "base_url" : "https://smallman.co.kr/product/list.html?cate_no=2825",
             "x_path" : "/html/body/div/div/div/div/div/div/div/a",
             "pages" : 1
         },
         {
+            "key" : "ki_jac_nam",
             "category" : "Outer",
             "base_url" : "https://smallman.co.kr/product/list.html?cate_no=39",
             "x_path" : "/html/body/div/div/div/div/div/div/div/a",
             "pages" : 1
         },
         {
+            "key" : "ki_jac_nam",
             "category" : "Pants",
             "base_url" : "https://smallman.co.kr/product/list.html?cate_no=2815",
             "x_path" : "/html/body/div/div/div/div/div/div/div/a",
             "pages" : 1
-        }
-    ],
-
-    "ki_jac_nyeo" : 
-    [
+        },
         {
+            "key" : "ki_jac_nyeo",
             "category" : "Top",
             "base_url" : "https://kijakeunyeoja.com/category/top/65",
             "x_path" : "/html/body/div/div/div/div/div/div/div/a",
             "pages" : 1
         },
         {
+            "key" : "ki_jac_nyeo",
             "category" : "Outer",
             "base_url" : "https://kijakeunyeoja.com/category/outer/64",
             "x_path" : "/html/body/div/div/div/div/div/div/div/a",
             "pages" : 1
         },
         {
+            "key" : "ki_jac_nyeo",
             "category" : "Pants",
             "base_url" : "https://kijakeunyeoja.com/category/pants/67",
             "x_path" : "/html/body/div/div/div/div/div/div/div/a",
             "pages" : 1
         },
         {
+            "key" : "ki_jac_nyeo",
             "category" : "Dress",
             "base_url" : "https://kijakeunyeoja.com/category/dress/66",
             "x_path" : "/html/body/div/div/div/div/div/div/div/a",
             "pages" : 1
         },
         {
+            "key" : "ki_jac_nyeo",
             "category" : "Skirt",
             "base_url" : "https://kijakeunyeoja.com/category/skirt/68",
             "x_path" : "/html/body/div/div/div/div/div/div/div/a",
             "pages" : 1
-        }
-    ],
-
-    "so_nyeo_na_ra" : 
-    [
+        },
         {
+            "key" : "so_nyeo_na_ra",
             "category" : "Top",
             "base_url" : "https://sonyunara.com/shop/list.php?cate=0101",
             "x_path" : "/html/body/div/section/div/div/div/div/div/ul/li/div/a",
             "pages" : 1
         },
         {
+            "key" : "so_nyeo_na_ra",
             "category" : "Top", 
             "base_url" : "https://sonyunara.com/shop/list.php?cate=0102",
             "x_path" : "/html/body/div/section/div/div/div/div/div/ul/li/div/a",
             "pages" : 1
         },
         {
+            "key" : "so_nyeo_na_ra",
             "category" : "Outer",
             "base_url" : "https://sonyunara.com/shop/list.php?cate=0104",
             "x_path" : "/html/body/div/section/div/div/div/div/div/ul/li/div/a",
             "pages" : 1
         },
         {
+            "key" : "so_nyeo_na_ra",
             "category" : "Pants",
             "base_url" : "https://sonyunara.com/shop/list.php?cate=0201",
             "x_path" : "/html/body/div/section/div/div/div/div/div/ul/li/div/a",
             "pages" : 1
         },
         {
+            "key" : "so_nyeo_na_ra",
             "category" : "Dress",
             "base_url" : "https://sonyunara.com/shop/list.php?cate=0103",
             "x_path" : "/html/body/div/section/div/div/div/div/div/ul/li/div/a",
             "pages" : 1
         },
         {
+            "key" : "so_nyeo_na_ra",
             "category" : "Skirt",
             "base_url" : "https://sonyunara.com/shop/list.php?cate=0202",
             "x_path" : "/html/body/div/section/div/div/div/div/div/ul/li/div/a",
