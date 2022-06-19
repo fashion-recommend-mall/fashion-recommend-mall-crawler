@@ -1,15 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from service.selenium_contextmanager import WebDriver
-import celery
-from celery import Task
-
-app = celery.Celery(
-    'get_item_urls',
-    broker="pyamqp://guest@localhost",
-    backend="rpc://guest@localhost"
-)
-
+from src.service.selenium_contextmanager import WebDriver
+from src.service.celery_setting import app
+from celery import group
 
 def _init_driver():
 
@@ -72,7 +65,7 @@ def get_items_url(state : dict):
 @app.task
 def get_items_url_all(targets : dict):
 
-    g = celery.group(
+    g = group(
         get_items_url.s(target) for target in targets
     )
 
