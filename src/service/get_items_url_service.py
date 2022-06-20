@@ -1,22 +1,7 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from src.service.selenium_contextmanager import WebDriver
 from src.service.celery_setting import app
 from celery import group
-
-def _init_driver():
-
-    options = webdriver.ChromeOptions()
-
-    options.add_argument('headless')
-
-    options.add_argument('window-size=1920x1080')
-
-    options.add_argument("disable-gpu")
-
-    driver = webdriver.Chrome("/usr/local/bin/chromedriver", chrome_options=options)
-
-    return driver
 
 
 def _valid_url(a_list : list[str]):
@@ -43,7 +28,7 @@ def get_items_url(state : dict):
 
     url_list = []
 
-    with WebDriver(_init_driver()) as driver:
+    with WebDriver() as driver:
 
         for page in range(1, int(state["pages"])+1):
 
@@ -59,7 +44,7 @@ def get_items_url(state : dict):
 
             url_list.extend(_valid_url(a_list))
 
-    return { state["category"] : url_list }
+    return { "site" : state["key"] , "category" : state["category"], "urls" : url_list}
 
 
 @app.task
