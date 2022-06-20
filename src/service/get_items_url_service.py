@@ -1,10 +1,11 @@
 from selenium.webdriver.common.by import By
 from src.service.selenium_contextmanager import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
 from src.service.celery_setting import app
 from celery import group
 
 
-def _valid_url(a_list : list[str]):
+def _valid_url(a_list : list[WebElement]):
 
     temp_list = []
 
@@ -23,7 +24,6 @@ def _valid_url(a_list : list[str]):
     return temp_list
 
 
-@app.task
 def get_items_url(state : dict):
 
     url_list = []
@@ -45,13 +45,3 @@ def get_items_url(state : dict):
             url_list.extend(_valid_url(a_list))
 
     return { "site" : state["key"] , "category" : state["category"], "urls" : url_list}
-
-
-@app.task
-def get_items_url_all(targets : dict):
-
-    g = group(
-        get_items_url.s(target) for target in targets
-    )
-
-    return g()

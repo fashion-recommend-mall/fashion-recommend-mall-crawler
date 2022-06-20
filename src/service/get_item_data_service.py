@@ -46,11 +46,11 @@ def get_item_data_from_go_go_sing(urls:list):
 
             find_reviews = driver.find_elements(By.XPATH, "/html/body/div/div/div/div/div/ul/li/div/div/div/div/div/div")
             
-            reviews = []
+            reviews_list = []
             for find_review in find_reviews:
-                reviews.append(find_review.text)
+                reviews_list.append(find_review.text)
             
-            reviews = " ".join(reviews)
+            reviews = " ".join(reviews_list)
 
             return title, price, img, reviews
 
@@ -73,11 +73,12 @@ def get_item_data_from_ki_jac_nyeo(urls:list):
             
             find_reviews = driver.find_elements(By.XPATH, "/html/body/div/div/div/div/div/div/div/div/div/table/tbody/tr/td/div/div")
             
-            reviews = []
+            reviews_list = []
             for find_review in find_reviews:
-                reviews.append(find_review.text.replace("\n",""))
-            
-            reviews = " ".join(reviews)
+                reviews_list.append(find_review.text.replace("\n",""))
+
+
+            reviews = " ".join(reviews_list) 
 
             return title, price, img, reviews
 
@@ -106,11 +107,11 @@ def get_item_data_from_ki_jac_nam(urls:list):
 
             find_reviews = driver.find_elements(By.XPATH, "/html/body/div/div/div/div/div/div/div/div/table/tbody/tr/td/div/div")
             
-            reviews = []
+            reviews_list = []
             for find_review in find_reviews:
-                reviews.append(find_review.text)
+                reviews_list.append(find_review.text)
             
-            reviews = " ".join(reviews)
+            reviews = " ".join(reviews_list)
 
             return title, price, img, reviews
 
@@ -137,10 +138,10 @@ def get_item_data_from_so_nyeo_na_ra(urls:list):
 
             find_reviews = driver.find_elements(By.XPATH, "/html/body/div/div/div/div/form/fieldset/ul/li/div/p")
             
-            reviews = []
+            reviews_list = []
             for find_review in find_reviews:
-                reviews.append(find_review.text)
+                reviews_list.append(find_review.text)
             
-            reviews = " ".join(reviews)
+            reviews = " ".join(reviews_list)
 
             return title, price, img, reviews
