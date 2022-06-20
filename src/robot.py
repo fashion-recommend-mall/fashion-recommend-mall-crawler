@@ -7,7 +7,7 @@ class Robot(metaclass=ABCMeta):
         pass
     
     @abstractmethod
-    def get_item_date(self):
+    def get_item_data(self):
         pass
     
     @abstractmethod
