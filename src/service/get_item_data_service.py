@@ -4,32 +4,26 @@ from src.service.selenium_contextmanager import WebDriver
 def get_item_data(state : dict):
 
     if(state["site"] == "go_go_sing"):
-        title, price, img, reviews = get_item_data_from_go_go_sing(state["urls"])
+        result= get_item_data_from_go_go_sing(state)
     if(state["site"] == "ki_jac_nyeo"):
-        title, price, img, reviews = get_item_data_from_ki_jac_nyeo(state["urls"])
+        result = get_item_data_from_ki_jac_nyeo(state)
     if(state["site"] == "ki_jac_nam"):
-        title, price, img, reviews = get_item_data_from_ki_jac_nam(state["urls"])
+        result = get_item_data_from_ki_jac_nam(state)
     if(state["site"] == "so_nyeo_na_ra"):
-        title, price, img, reviews = get_item_data_from_so_nyeo_na_ra(state["urls"])
+        result = get_item_data_from_so_nyeo_na_ra(state)
 
-    result = {
-        "site" : state["site"],
-        "category" : state["category"],
-        "title" : title,
-        "image_link" : img,
-        "price" : price,
-        "reviews" : reviews
-    }
-
-    return result
+    return {"item_datas" : result}
     
 
 # Crawling items from go go sing
-def get_item_data_from_go_go_sing(urls:list):
+def get_item_data_from_go_go_sing(state:dict):
+
+    result_list =[]
 
     with WebDriver() as driver:
 
-        for url in urls:
+        for url in state["urls"]:
+
             driver.implicitly_wait(5)
 
             driver.get(url)
@@ -52,15 +46,29 @@ def get_item_data_from_go_go_sing(urls:list):
             
             reviews = " ".join(reviews_list)
 
-            return title, price, img, reviews
+            result = {
+                "site" : state["site"],
+                "category" : state["category"],
+                "title" : title,
+                "image_link" : _img_url_to_http_from_https(img),
+                "price" : price,
+                "reviews" : reviews
+            }
+
+            result_list.append(result)
+            
+    return result_list
 
 
 # Crawling items from ki jac nyeo
-def get_item_data_from_ki_jac_nyeo(urls:list):
+def get_item_data_from_ki_jac_nyeo(state:dict):
+
+    result_list =[]
 
     with WebDriver() as driver:
 
-        for url in urls:
+        for url in state["urls"]:
+
             driver.implicitly_wait(5)
 
             driver.get(url)
@@ -80,24 +88,37 @@ def get_item_data_from_ki_jac_nyeo(urls:list):
 
             reviews = " ".join(reviews_list) 
 
-            return title, price, img, reviews
+            result = {
+                "site" : state["site"],
+                "category" : state["category"],
+                "title" : title,
+                "image_link" : _img_url_to_http_from_https(img),
+                "price" : price,
+                "reviews" : reviews
+            }
+
+            result_list.append(result)
+            
+    return result_list
 
 
 # Crawling items from ki jac nam
-def get_item_data_from_ki_jac_nam(urls:list):
+def get_item_data_from_ki_jac_nam(state:dict):
+
+    result_list =[]
 
     with WebDriver() as driver:
 
-        for url in urls:
+        for url in state["urls"]:
             driver.implicitly_wait(5)
 
             driver.get(url)
 
             driver.implicitly_wait(5)
 
-            title = driver.find_element(By.XPATH, "/html/body/div[3]/div/div[1]/div/div[2]/div[1]/div[2]/div[2]/div[4]/h1").text
-            price = driver.find_element(By.XPATH, "/html/body/div[3]/div/div[1]/div/div[2]/div[1]/div[2]/div[2]/div[4]/div[1]/div[2]/span").text
-            img = driver.find_element(By.XPATH, "/html/body/div[3]/div/div[1]/div/div[2]/div[1]/div[1]/div/div[1]/div/img").get_attribute("src")
+            title = driver.find_element(By.XPATH, "/html/body/div[2]/div[4]/div[1]/div[3]/h1").text
+            price = driver.find_element(By.XPATH, "/html/body/div[2]/div[4]/div[1]/div[3]/div[5]/div/table/tbody[1]/tr[2]/td/strong/span").text
+            img = driver.find_element(By.XPATH, "/html/body/div[2]/div[4]/div[1]/div[2]/div[1]/p/a/img").get_attribute("src")
             
             reviews_frame = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[4]/div[2]/div[4]/div[1]/iframe[2]')
 
@@ -113,15 +134,28 @@ def get_item_data_from_ki_jac_nam(urls:list):
             
             reviews = " ".join(reviews_list)
 
-            return title, price, img, reviews
+            result = {
+                "site" : state["site"],
+                "category" : state["category"],
+                "title" : title,
+                "image_link" : _img_url_to_http_from_https(img),
+                "price" : price,
+                "reviews" : reviews
+            }
+
+            result_list.append(result)
+
+    return result_list
 
 
 # Crawling items from so nyeo na ra
-def get_item_data_from_so_nyeo_na_ra(urls:list):
+def get_item_data_from_so_nyeo_na_ra(state:dict):
+
+    result_list =[]
 
     with WebDriver() as driver:
 
-        for url in urls:
+        for url in state["urls"]:
             driver.implicitly_wait(5)
 
             driver.get(url)
@@ -144,4 +178,19 @@ def get_item_data_from_so_nyeo_na_ra(urls:list):
             
             reviews = " ".join(reviews_list)
 
-            return title, price, img, reviews
+            result = {
+                "site" : state["site"],
+                "category" : state["category"],
+                "title" : title,
+                "image_link" : _img_url_to_http_from_https(img),
+                "price" : price,
+                "reviews" : reviews
+            }
+
+            result_list.append(result)
+            
+    return result_list
+
+
+def _img_url_to_http_from_https(url:str):
+    return url.replace("https", "http")

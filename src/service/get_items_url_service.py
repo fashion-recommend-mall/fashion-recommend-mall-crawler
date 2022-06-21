@@ -1,8 +1,6 @@
 from selenium.webdriver.common.by import By
 from src.service.selenium_contextmanager import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
-from src.service.celery_setting import app
-from celery import group
 
 
 def _valid_url(a_list : list[WebElement]):
