@@ -10,7 +10,7 @@ def get_sytle_from_img(state : dict) :
 
     image_link = state["image_link"]
 
-    style = requests.get(f'http://localhost:3000/upload?img_path={image_link}').json()
+    style = requests.get(f'http://3.34.98.41:3000/upload?img_path={image_link}').json()
 
     result = {
         "site" : state["site"],
