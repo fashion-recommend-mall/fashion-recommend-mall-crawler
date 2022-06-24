@@ -3,7 +3,7 @@ from selenium import webdriver
 
 class WebDriver:
     def __init__(self):
-        
+
         options = webdriver.ChromeOptions()
 
         options.add_argument('headless')
@@ -13,9 +13,9 @@ class WebDriver:
         options.add_argument("disable-gpu")
 
         driver = webdriver.Chrome("/usr/local/bin/chromedriver", chrome_options=options)
-        
+
         self.driver = driver
-        
+
     def __enter__(self):
         return self.driver
 

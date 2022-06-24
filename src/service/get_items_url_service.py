@@ -1,16 +1,17 @@
 from selenium.webdriver.common.by import By
-from src.tools.selenium_contextmanager import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
+
 from src.celery_setting import app
+from src.tools.selenium_contextmanager import WebDriver
 
 
 def _valid_url(a_list : list[WebElement]):
 
     temp_list = []
 
-    for a in a_list:
+    for find_a in a_list:
 
-        url = a.get_attribute("href")
+        url = find_a.get_attribute("href")
 
         if "javascript" in url :
 
@@ -18,7 +19,7 @@ def _valid_url(a_list : list[WebElement]):
 
         if url != "":
 
-            temp_list.append(a.get_attribute("href").split("javascript")[0])
+            temp_list.append(find_a.get_attribute("href").split("javascript")[0])
 
     return temp_list
 
@@ -31,7 +32,7 @@ def get_items_url(states : dict):
     with WebDriver() as driver:
 
         for state in states["targets"]:
-            
+
             for page in range(1, int(state["pages"])+1):
 
                 driver.implicitly_wait(5)

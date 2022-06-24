@@ -1,12 +1,13 @@
-from konlpy.tag import Okt
-from src.celery_setting import app
 import jpype
+from konlpy.tag import Okt
+
+from src.celery_setting import app
 
 
 @app.task
 def get_keywords_from_reviews(state : dict) :
-    
-    t = Okt()
+
+    okt = Okt()
 
     jpype.attachThreadToJVM()
 
@@ -15,7 +16,7 @@ def get_keywords_from_reviews(state : dict) :
 
     reviews = state["reviews"]
 
-    filterd_reivews = list(filter(reviews_filter, t.pos(reviews)))
+    filterd_reivews = list(filter(reviews_filter, okt.pos(reviews)))
 
     review_result = []
     for review in filterd_reivews:

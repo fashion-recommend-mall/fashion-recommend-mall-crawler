@@ -8,7 +8,7 @@ class Robot():
 
     def __init__(self, states:dict):
         self.states = states
-        self.item_url_list = []
+        self.item_url_list : list[str] = []
 
 
     def run(self):
