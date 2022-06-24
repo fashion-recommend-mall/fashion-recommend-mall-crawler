@@ -7,7 +7,7 @@ from src.tools.setting import tool_setting
 WebDriver = tool_setting["web_driver"]
 
 
-def _valid_url(a_list : list[WebElement]):
+def _valid_url(a_list : list):
 
     temp_list = []
 
