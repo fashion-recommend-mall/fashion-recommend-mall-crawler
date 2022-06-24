@@ -1,6 +1,9 @@
 from selenium.webdriver.common.by import By
-from src.service.selenium_contextmanager import WebDriver
+from src.tools.selenium_contextmanager import WebDriver
 
+from src.celery_setting import app
+
+@app.task
 def get_item_data(state : dict):
 
     if(state["site"] == "go_go_sing"):

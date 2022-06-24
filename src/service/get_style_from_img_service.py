@@ -1,21 +1,22 @@
 import requests
 
+from src.celery_setting import app
+
+@app.task
 def get_sytle_from_img(state : dict) :
 
-    for result in state["result"]:
+    image_link = state["image_link"]
 
-        image_link = result["image_link"]
+    style = requests.get(f'http://localhost:3000/upload?img_path={image_link}').json()
 
-        style = requests.get(f'http://localhost:3000/upload?img_path={image_link}').json()
-    
-        result = {
-            "site" : result["site"],
-            "category" : result["category"],
-            "title" : result["title"],
-            "image_link" : result["image_link"],
-            "price" : result["price"],
-            "reviews" : result["reviews"],
-            "style" : style
-        }
+    result = {
+        "site" : state["site"],
+        "category" : state["category"],
+        "title" : state["title"],
+        "image_link" : state["image_link"],
+        "price" : state["price"],
+        "reviews" : state["reviews"],
+        "style" : style
+    }
 
-        print(result)
+    print(result)
