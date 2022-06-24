@@ -1,6 +1,9 @@
 import requests
 
 from src.celery_setting import app
+from src.tools.setting import tool_setting
+
+DatabaseDriver = tool_setting["database_driver"]
 
 @app.task
 def get_sytle_from_img(state : dict) :
@@ -19,4 +22,5 @@ def get_sytle_from_img(state : dict) :
         "style" : style
     }
 
-    print(result)
+    with DatabaseDriver() as driver:
+        driver.insert_one(result)

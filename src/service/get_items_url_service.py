@@ -2,7 +2,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from src.celery_setting import app
-from src.tools.selenium_contextmanager import WebDriver
+from src.tools.setting import tool_setting
+
+WebDriver = tool_setting["web_driver"]
 
 
 def _valid_url(a_list : list[WebElement]):

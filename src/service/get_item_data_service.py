@@ -1,7 +1,10 @@
 from selenium.webdriver.common.by import By
-from src.tools.selenium_contextmanager import WebDriver
 
 from src.celery_setting import app
+from src.tools.setting import tool_setting
+
+WebDriver = tool_setting["web_driver"]
+
 
 @app.task
 def get_item_data(state : dict):

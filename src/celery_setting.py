@@ -4,8 +4,7 @@ from celery import Celery
 
 app = Celery(
     'src',
-    broker="pyamqp://guest@localhost",
-    backend="rpc://guest@localhost",
+    broker="pyamqp://guest@3.34.5.27",
     include=['src.robot']
 )
 

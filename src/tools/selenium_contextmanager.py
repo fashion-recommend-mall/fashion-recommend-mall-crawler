@@ -1,7 +1,7 @@
 import time
 from selenium import webdriver
 
-class WebDriver:
+class SeleniumContextManager:
     def __init__(self):
 
         options = webdriver.ChromeOptions()

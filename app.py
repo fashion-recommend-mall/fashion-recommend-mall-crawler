@@ -9,7 +9,8 @@ def main():
 	
 	robot = Robot(targets)
 
-	robot.run()
+	#robot.run()
+	robot.test()
 
 
 if __name__ == "__main__":
