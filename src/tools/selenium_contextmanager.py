@@ -12,7 +12,7 @@ class SeleniumContextManager:
 
         options.add_argument("disable-gpu")
 
-        driver = webdriver.Chrome("/usr/local/bin/chromedriver", chrome_options=options)
+        driver = webdriver.Chrome(chrome_options=options)
 
         self.driver = driver
 
