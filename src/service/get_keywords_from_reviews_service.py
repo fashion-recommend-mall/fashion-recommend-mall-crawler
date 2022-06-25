@@ -35,7 +35,7 @@ def get_keywords_from_reviews(state : dict) :
         "reviews" : review_result
     }
 
-    with DatabaseDriver() as driver:
+    with DatabaseDriver() as driver: # type: ignore
         driver.layer3.insert_one(copy.deepcopy(result))
 
     return result

@@ -32,7 +32,7 @@ def get_item_data(state : dict):
         "reviews" : reviews
     }
 
-    with DatabaseDriver() as driver:
+    with DatabaseDriver() as driver: # type: ignore
         driver.layer2.insert_one(copy.deepcopy(result))
 
     return result
@@ -41,7 +41,7 @@ def get_item_data(state : dict):
 # Crawling items from go go sing
 def get_item_data_from_go_go_sing(state:dict):
 
-    with WebDriver() as driver:
+    with WebDriver() as driver: # type: ignore
 
         driver.implicitly_wait(5)
         driver.get(state["url"])
@@ -73,7 +73,7 @@ def get_item_data_from_go_go_sing(state:dict):
 # Crawling items from ki jac nyeo
 def get_item_data_from_ki_jac_nyeo(state:dict):
 
-    with WebDriver() as driver:
+    with WebDriver() as driver: # type: ignore
 
         driver.implicitly_wait(5)
         driver.get(state["url"])
@@ -103,7 +103,7 @@ def get_item_data_from_ki_jac_nyeo(state:dict):
 # Crawling items from ki jac nam
 def get_item_data_from_ki_jac_nam(state:dict):
 
-    with WebDriver() as driver:
+    with WebDriver() as driver: # type: ignore
 
         driver.implicitly_wait(5)
         driver.get(state["url"])
@@ -137,7 +137,7 @@ def get_item_data_from_ki_jac_nam(state:dict):
 # Crawling items from so nyeo na ra
 def get_item_data_from_so_nyeo_na_ra(state:dict):
 
-    with WebDriver() as driver:
+    with WebDriver() as driver: # type: ignore
 
         driver.implicitly_wait(5)
         driver.get(state["url"])

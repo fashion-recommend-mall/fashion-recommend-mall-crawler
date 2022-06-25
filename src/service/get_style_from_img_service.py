@@ -22,5 +22,5 @@ def get_sytle_from_img(state : dict) :
         "style" : style
     }
 
-    with DatabaseDriver() as driver:
+    with DatabaseDriver() as driver: # type: ignore
         driver.layer4.insert_one(result)

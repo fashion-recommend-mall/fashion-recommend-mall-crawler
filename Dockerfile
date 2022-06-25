@@ -13,7 +13,6 @@ RUN apt-get install openjdk-11-jdk -y
 
 COPY ./ /home/crwaler/
 WORKDIR /home/crwaler/
-RUN pip3 install celery
 RUN pip3 install -r requirements.txt
 
 CMD python3 -m celery -A src.celery_setting worker -l INFO

@@ -1,7 +1,6 @@
 import copy
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webelement import WebElement
 
 from src.celery_setting import app
 from src.tools.setting import tool_setting
@@ -34,7 +33,7 @@ def get_items_url(states : dict):
 
     result_list = []
 
-    with WebDriver() as driver:
+    with WebDriver() as driver: # type: ignore
 
         for state in states["targets"]:
 
@@ -54,7 +53,7 @@ def get_items_url(states : dict):
                     result = { "site" : state["key"] , "category" : state["category"], "url" : url}
                     result_list.append(result)
 
-    with DatabaseDriver() as driver:
-        driver.layer1.insert_one(copy.deepcopy(result))
+    with DatabaseDriver() as driver: # type: ignore
+        driver.layer1.insert_one(copy.deepcopy(result_list))
 
     return result_list
