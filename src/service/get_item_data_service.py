@@ -4,7 +4,7 @@ from src.celery_setting import app
 from src.tools.setting import tool_setting
 
 WebDriver = tool_setting["web_driver"]
-
+DatabaseDriver = tool_setting["database_driver"]
 
 @app.task
 def get_item_data(state : dict):
@@ -29,6 +29,9 @@ def get_item_data(state : dict):
         "price" : price,
         "reviews" : reviews
     }
+
+    with DatabaseDriver() as driver:
+        driver.layer2.insert_one(result)
 
     return result
 

@@ -2,7 +2,9 @@ import jpype
 from konlpy.tag import Okt
 
 from src.celery_setting import app
+from src.tools.setting import tool_setting
 
+DatabaseDriver = tool_setting["database_driver"]
 
 @app.task
 def get_keywords_from_reviews(state : dict) :
@@ -30,5 +32,8 @@ def get_keywords_from_reviews(state : dict) :
         "price" : state["price"],
         "reviews" : review_result
     }
+
+    with DatabaseDriver() as driver:
+        driver.layer3.insert_one(result)
 
     return result

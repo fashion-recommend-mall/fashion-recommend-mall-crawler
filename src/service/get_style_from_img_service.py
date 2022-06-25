@@ -23,4 +23,4 @@ def get_sytle_from_img(state : dict) :
     }
 
     with DatabaseDriver() as driver:
-        driver.insert_one(result)
+        driver.layer4.insert_one(result)

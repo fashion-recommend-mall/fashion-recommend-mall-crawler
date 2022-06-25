@@ -5,6 +5,7 @@ from src.celery_setting import app
 from src.tools.setting import tool_setting
 
 WebDriver = tool_setting["web_driver"]
+DatabaseDriver = tool_setting["database_driver"]
 
 
 def _valid_url(a_list : list):
@@ -50,5 +51,8 @@ def get_items_url(states : dict):
                 for url in _valid_url(a_list):
                     result = { "site" : state["key"] , "category" : state["category"], "url" : url}
                     result_list.append(result)
+
+    with DatabaseDriver() as driver:
+        driver.layer1.insert_one(result_list)
 
     return result_list

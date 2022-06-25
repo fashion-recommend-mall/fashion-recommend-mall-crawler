@@ -9,7 +9,7 @@ class MongodbContextManager:
         self.db = self.client.mall
 
     def __enter__(self):
-        return self.db.datas
+        return self.db
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         print("exit")
