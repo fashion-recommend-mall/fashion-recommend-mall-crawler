@@ -1,3 +1,5 @@
+import copy
+
 from selenium.webdriver.common.by import By
 
 from src.celery_setting import app
@@ -31,7 +33,7 @@ def get_item_data(state : dict):
     }
 
     with DatabaseDriver() as driver:
-        driver.layer2.insert_one(result)
+        driver.layer2.insert_one(copy.deepcopy(result))
 
     return result
 

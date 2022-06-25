@@ -1,3 +1,5 @@
+import copy
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -53,6 +55,6 @@ def get_items_url(states : dict):
                     result_list.append(result)
 
     with DatabaseDriver() as driver:
-        driver.layer1.insert_one(result_list)
+        driver.layer1.insert_one(copy.deepcopy(result))
 
     return result_list

@@ -1,3 +1,5 @@
+import copy
+
 import jpype
 from konlpy.tag import Okt
 
@@ -34,6 +36,6 @@ def get_keywords_from_reviews(state : dict) :
     }
 
     with DatabaseDriver() as driver:
-        driver.layer3.insert_one(result)
+        driver.layer3.insert_one(copy.deepcopy(result))
 
     return result
