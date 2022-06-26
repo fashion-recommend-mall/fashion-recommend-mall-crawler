@@ -1,7 +1,27 @@
-import time
+"""
+This is Selenium context manager!
+"""
 from selenium import webdriver
 
+from project_setting import url_setting
+
+selenium_url : str = url_setting["selenium_url"]
+
 class SeleniumContextManager:
+    """
+    Title : SeleniumContextManager
+
+    This class is to deal selenium with context manager!
+
+    selenium should close connection!
+
+    Because it exist in memory even if it's over
+
+    Attributes:
+        - __init__ : Setting selenium!
+        - __enter__ : return connection!
+        - __exit__ : quit connection!
+    """
     def __init__(self):
 
         options = webdriver.ChromeOptions()
@@ -18,7 +38,7 @@ class SeleniumContextManager:
 
         options.add_argument("--disable-dev-shm-usage")
 
-        driver = webdriver.Chrome("/usr/local/bin/chromedriver", chrome_options=options)
+        driver = webdriver.Chrome(selenium_url, chrome_options=options)
 
         self.driver = driver
 
@@ -27,5 +47,4 @@ class SeleniumContextManager:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.driver.quit()
-        time.sleep(2)
     
