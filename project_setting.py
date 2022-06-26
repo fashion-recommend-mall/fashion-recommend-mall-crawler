@@ -20,7 +20,8 @@ from src.tools.selenium_contextmanager import SeleniumContextManager
 url_setting = {
     "mongo_db_url" : "mongodb+srv://admin:emm05235@cluster0.umzeh.mongodb.net/" \
                              "myFirstDatabase?retryWrites=true&w=majority",
-    "selenium_url" : "/usr/local/bin/chromedriver"
+    "selenium_url" : "/usr/local/bin/chromedriver",
+    "deep_learning_server_url" : "http://3.34.98.41:3000"
 }
 
 
