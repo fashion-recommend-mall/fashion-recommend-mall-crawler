@@ -3,13 +3,14 @@ import copy
 from selenium.webdriver.common.by import By
 
 from src.celery_setting import app
-from src.tools.setting import tool_setting
-
-WebDriver = tool_setting["web_driver"]
-DatabaseDriver = tool_setting["database_driver"]
+from project_setting import tool_setting
 
 
-def _valid_url(a_list : list):
+WebDriver : str = tool_setting["web_driver"]
+DatabaseDriver : str = tool_setting["database_driver"]
+
+
+def _valid_url(a_list : list) -> list:
 
     temp_list = []
 
@@ -29,7 +30,7 @@ def _valid_url(a_list : list):
 
 
 @app.task
-def get_items_url(states : dict):
+def get_items_url(states : dict) -> list:
 
     result_list = []
 

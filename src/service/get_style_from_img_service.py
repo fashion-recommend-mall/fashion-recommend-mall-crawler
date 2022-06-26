@@ -1,12 +1,14 @@
 import requests
 
 from src.celery_setting import app
-from src.tools.setting import tool_setting
+from project_setting import tool_setting
 
-DatabaseDriver = tool_setting["database_driver"]
+
+DatabaseDriver : str = tool_setting["database_driver"]
+
 
 @app.task
-def get_sytle_from_img(state : dict) :
+def get_sytle_from_img(state : dict) -> None:
 
     image_link = state["image_link"]
 

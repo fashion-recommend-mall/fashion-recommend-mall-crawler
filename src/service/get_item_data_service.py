@@ -3,13 +3,15 @@ import copy
 from selenium.webdriver.common.by import By
 
 from src.celery_setting import app
-from src.tools.setting import tool_setting
+from project_setting import tool_setting
 
-WebDriver = tool_setting["web_driver"]
-DatabaseDriver = tool_setting["database_driver"]
+
+WebDriver : str = tool_setting["web_driver"]
+DatabaseDriver : str = tool_setting["database_driver"]
+
 
 @app.task
-def get_item_data(state : dict):
+def get_item_data(state : dict) -> dict:
 
     if(state["site"] == "go_go_sing"):
         title, price, img, reviews = get_item_data_from_go_go_sing(state)
@@ -39,7 +41,7 @@ def get_item_data(state : dict):
 
 
 # Crawling items from go go sing
-def get_item_data_from_go_go_sing(state:dict):
+def get_item_data_from_go_go_sing(state:dict) -> tuple:
 
     with WebDriver() as driver: # type: ignore
 
@@ -71,7 +73,7 @@ def get_item_data_from_go_go_sing(state:dict):
 
 
 # Crawling items from ki jac nyeo
-def get_item_data_from_ki_jac_nyeo(state:dict):
+def get_item_data_from_ki_jac_nyeo(state:dict) -> tuple:
 
     with WebDriver() as driver: # type: ignore
 
@@ -101,7 +103,7 @@ def get_item_data_from_ki_jac_nyeo(state:dict):
 
 
 # Crawling items from ki jac nam
-def get_item_data_from_ki_jac_nam(state:dict):
+def get_item_data_from_ki_jac_nam(state:dict) -> tuple:
 
     with WebDriver() as driver: # type: ignore
 
@@ -135,7 +137,7 @@ def get_item_data_from_ki_jac_nam(state:dict):
 
 
 # Crawling items from so nyeo na ra
-def get_item_data_from_so_nyeo_na_ra(state:dict):
+def get_item_data_from_so_nyeo_na_ra(state:dict) -> tuple:
 
     with WebDriver() as driver: # type: ignore
 
@@ -166,5 +168,5 @@ def get_item_data_from_so_nyeo_na_ra(state:dict):
         return title, price, img, reviews
 
 
-def _img_url_to_http_from_https(url:str):
+def _img_url_to_http_from_https(url:str) -> str:
     return url.replace("https", "http")
