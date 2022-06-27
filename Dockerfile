@@ -13,7 +13,7 @@ RUN apt-get install openjdk-11-jdk -y
 
 COPY ./ /home/crwaler/
 WORKDIR /home/crwaler/
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r resource/requirements.txt
 
 RUN make checklist
 
