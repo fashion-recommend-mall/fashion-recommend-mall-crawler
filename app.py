@@ -4,7 +4,7 @@ from src.robot import Robot
 
 
 def main():
-	with open('targets.json') as f:
+	with open('resource/targets.json') as f:
 		targets = json.load(f)
 	
 	robot = Robot(targets)
