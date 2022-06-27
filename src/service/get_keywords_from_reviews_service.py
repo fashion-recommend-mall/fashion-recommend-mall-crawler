@@ -1,3 +1,6 @@
+"""
+This is Get Keywords From Review Module
+"""
 import copy
 
 import jpype
@@ -7,11 +10,42 @@ from src.celery_setting import app
 from project_setting import tool_setting
 
 
-DatabaseDriver : str = tool_setting["database_driver"]
+DatabaseDriver = tool_setting["database_driver"]
 
 
 @app.task
 def get_keywords_from_reviews(state : dict) -> dict:
+    """
+    Title : get_keywords_from_reviews
+
+    It is working for getting Adjective and Noun from review!
+
+    It uses konlpy module!
+
+    So, Before use, install JVM over 11!
+
+    Args :
+        - state (dict) : this has data like below
+        {
+            site : str,
+            category : str,
+            title : str,
+            image_link : str,
+            price : st,
+            reviews : str
+        }
+
+    Returns :
+        - result (list) : this has list include below
+        {
+            site : str,
+            category : str,
+            title : str,
+            image_link : str,
+            price : st,
+            reviews : list<str>
+        }
+    """
 
     okt = Okt()
 

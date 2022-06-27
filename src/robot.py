@@ -26,7 +26,6 @@ class Robot():
         self.states = states
         self.item_url_list : list[str] = []
 
-
     def run(self) -> None:
         """
         This is run method
@@ -43,4 +42,4 @@ class Robot():
 
         for url in self.item_url_list:
             result = get_item_data.s(url) | get_keywords_from_reviews.s() | get_sytle_from_img.s()
-            result()
+            result()  # type: ignore

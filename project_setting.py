@@ -4,7 +4,7 @@ This is Project Settings
 Check below!
 
 url_setting 
-    - Setting database(mondgodb atlas) and selenium urls!
+    - Setting database(mondgodb atlas), selenium and deep learning server urls!
 
 tool_setting
     - Setting context manager to DI

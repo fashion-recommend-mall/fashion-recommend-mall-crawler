@@ -1,3 +1,6 @@
+"""
+This is Get Item Data Module
+"""
 import copy
 
 from selenium.webdriver.common.by import By
@@ -6,13 +9,36 @@ from src.celery_setting import app
 from project_setting import tool_setting
 
 
-WebDriver : str = tool_setting["web_driver"]
-DatabaseDriver : str = tool_setting["database_driver"]
+WebDriver  = tool_setting["web_driver"]
+DatabaseDriver  = tool_setting["database_driver"]
 
 
 @app.task
 def get_item_data(state : dict) -> dict:
+    """
+    Title : get_item_data
 
+    It will crawling each item data
+
+    Args :
+        - state (dict) : this has data like below
+        {
+            site : str,
+            category : str,
+            url : str,
+        }
+
+    Returns :
+        - result (ditc) : this has data like below
+        {
+            site : str,
+            category : str,
+            title : str,
+            image_link : str,
+            price : st,
+            reviews : str
+        }
+    """
     if(state["site"] == "go_go_sing"):
         title, price, img, reviews = get_item_data_from_go_go_sing(state)
 
@@ -42,6 +68,28 @@ def get_item_data(state : dict) -> dict:
 
 # Crawling items from go go sing
 def get_item_data_from_go_go_sing(state:dict) -> tuple:
+    """
+    Title : get_item_data_from_go_go_sing
+
+    It is crawling item data from go go sing site
+
+    Args :
+        - state (dict) : this has data like below
+        {
+            site : str,
+            category : str,
+            url : str,
+        }
+
+    Returns :
+        - result (ditc) : this has data like below
+        {
+            title : str,
+            img : str,
+            price : st,
+            reviews : str
+        }
+    """
 
     with WebDriver() as driver: # type: ignore
 
@@ -74,6 +122,28 @@ def get_item_data_from_go_go_sing(state:dict) -> tuple:
 
 # Crawling items from ki jac nyeo
 def get_item_data_from_ki_jac_nyeo(state:dict) -> tuple:
+    """
+    Title : get_item_data_from_ki_jac_nyeo
+
+    It is crawling item data from ki jac nyeo
+
+    Args :
+        - state (dict) : this has data like below
+        {
+            site : str,
+            category : str,
+            url : str,
+        }
+
+    Returns :
+        - result (ditc) : this has data like below
+        {
+            title : str,
+            img : str,
+            price : st,
+            reviews : str
+        }
+    """
 
     with WebDriver() as driver: # type: ignore
 
@@ -104,6 +174,28 @@ def get_item_data_from_ki_jac_nyeo(state:dict) -> tuple:
 
 # Crawling items from ki jac nam
 def get_item_data_from_ki_jac_nam(state:dict) -> tuple:
+    """
+    Title : get_item_data_from_ki_jac_nam
+
+    It is crawling item data from ki jac nam
+
+    Args :
+        - state (dict) : this has data like below
+        {
+            site : str,
+            category : str,
+            url : str,
+        }
+
+    Returns :
+        - result (ditc) : this has data like below
+        {
+            title : str,
+            img : str,
+            price : st,
+            reviews : str
+        }
+    """
 
     with WebDriver() as driver: # type: ignore
 
@@ -138,6 +230,28 @@ def get_item_data_from_ki_jac_nam(state:dict) -> tuple:
 
 # Crawling items from so nyeo na ra
 def get_item_data_from_so_nyeo_na_ra(state:dict) -> tuple:
+    """
+    Title : get_item_data_from_so_nyeo_na_ra
+
+    It is crawling item data from so nyeo na ra
+
+    Args :
+        - state (dict) : this has data like below
+        {
+            site : str,
+            category : str,
+            url : str,
+        }
+
+    Returns :
+        - result (ditc) : this has data like below
+        {
+            title : str,
+            img : str,
+            price : st,
+            reviews : str
+        }
+    """
 
     with WebDriver() as driver: # type: ignore
 
@@ -169,4 +283,17 @@ def get_item_data_from_so_nyeo_na_ra(state:dict) -> tuple:
 
 
 def _img_url_to_http_from_https(url:str) -> str:
+    """
+    Title : _img_url_to_http_from_https
+
+    If get image using https, Some times has error like Unceltified
+
+    So, it converts https into http
+
+    Args :
+        - url (str) : img url
+
+    Returns :
+        - url (ditc) : replaced url
+    """
     return url.replace("https", "http")

@@ -6,7 +6,9 @@ from pymongo import MongoClient
 
 from project_setting import url_setting
 
+
 mongo_db_url : str = url_setting["mongo_db_url"]
+
 
 class MongodbContextManager:
     """

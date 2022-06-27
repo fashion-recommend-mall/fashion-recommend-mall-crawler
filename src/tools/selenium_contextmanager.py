@@ -5,7 +5,9 @@ from selenium import webdriver
 
 from project_setting import url_setting
 
+
 selenium_url : str = url_setting["selenium_url"]
+
 
 class SeleniumContextManager:
     """

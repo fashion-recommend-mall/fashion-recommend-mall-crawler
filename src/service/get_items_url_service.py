@@ -1,3 +1,6 @@
+"""
+This is Get Items URL Module
+"""
 import copy
 
 from selenium.webdriver.common.by import By
@@ -6,12 +9,24 @@ from src.celery_setting import app
 from project_setting import tool_setting
 
 
-WebDriver : str = tool_setting["web_driver"]
-DatabaseDriver : str = tool_setting["database_driver"]
+WebDriver  = tool_setting["web_driver"]
+DatabaseDriver  = tool_setting["database_driver"]
 
 
 def _valid_url(a_list : list) -> list:
+    """
+    Title : _valid_url
 
+    It is working for valid href tag list to str list
+
+    Some site witch made by php, tag has javascript code, so it also delete it
+
+    Args :
+        - a_list (list) : this is href tag list
+
+    Returns :
+        - result_list (list) : this is str list from href tag list
+    """
     temp_list = []
 
     for find_a in a_list:
@@ -31,6 +46,32 @@ def _valid_url(a_list : list) -> list:
 
 @app.task
 def get_items_url(states : dict) -> list:
+    """
+    Title : get_items_url
+
+    It is get item url from each site
+
+    Args :
+        - state (dict) : this has data like below
+        {
+            key : str
+            category : str,
+            base_url : str,
+            x_path : str,
+            pages" : int
+        },
+
+    Returns :
+        - result (list) : this has list include below
+        [
+            {
+                site : str,
+                category : str,
+                url : str
+            },
+            ...
+        ]
+    """
 
     result_list = []
 

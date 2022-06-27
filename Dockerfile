@@ -15,4 +15,6 @@ COPY ./ /home/crwaler/
 WORKDIR /home/crwaler/
 RUN pip3 install -r requirements.txt
 
+RUN make checklist
+
 CMD python3 -m celery -A src.celery_setting worker -l INFO

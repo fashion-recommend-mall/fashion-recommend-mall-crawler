@@ -12,7 +12,9 @@ from celery import Celery
 
 from project_setting import celery_broker_url
 
+
 broker_url : str = celery_broker_url["celery_broker_url"]
+
 
 app = Celery(
     'src',
